@@ -127,8 +127,6 @@ void World::Populate()
 	SetNeighbours();
 	GenerateTerrain();
 	UpdateLocalWorldChunks();
-
-	GenEntity();
 }
 
 void World::Clear()
@@ -398,9 +396,9 @@ void World::GenerateChunk(const uint8_t& p_xChunk, const uint8_t& p_zChunk, cons
 }
 
 // 生成一个实体如怪物到世界中
-void World::GenEntity()
+void World::GenEntity(ElkGameEngine::Objects::GameObject* _entity, const glm::vec3& p_position)
 {
-	SetBlock(glm::vec3(0.f, 10.f, 0.f), 10, false);
+	SetBlock(p_position, 9, false);
 }
 
 void World::GenerateTerrain()

@@ -9,7 +9,7 @@ using namespace ElkCraft::Gameplay;
 EntitiyController::EntitiyController(ElkCraft::Terrain::World* p_world)
 	:m_rigidbody(nullptr)
 {
-
+	
 }
 
 EntitiyController::~EntitiyController()

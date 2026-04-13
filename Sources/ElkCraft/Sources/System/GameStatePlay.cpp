@@ -104,6 +104,7 @@ void ElkCraft::System::GameStatePlay::Update()
 	UpdateDaytime();
 	UpdateWorld();
 	UpdatePlayer();
+	UpdateEntity();
 	UpdateScreenFilter();
 	UpdateFPSCounter();
 	UpdateDaytimeCounter();
@@ -132,6 +133,10 @@ void ElkCraft::System::GameStatePlay::CreateGameObjects()
 	m_player->AddComponent<Crafting>();
 	m_player->AddComponent<HealthSystem>(m_world.get());
 	m_player->AddComponent<HungerSystem>();
+
+	m_skeletonArcher = &m_sceneManager.GetCurrentScene().CreateGameObject("SkeletonArcher");
+	m_skeletonArcher->AddComponent<EntitiyController>(m_world.get());
+	
 
 	/* Create UI Camera */
 	m_UICamera = &m_sceneManager.GetCurrentScene().CreateGameObject("UICamera");
@@ -290,9 +295,7 @@ void ElkCraft::System::GameStatePlay::InitComponents()
 	}
 
 	/*Init Enemy SkeletonArcher*/
-	m_skeletonArcher = &m_sceneManager.GetCurrentScene().CreateGameObject("SkeletonArcher");
-	m_skeletonArcher->AddComponent<Rigidbody>();
-	m_skeletonArcher->AddComponent<EntitiyController>(m_world.get());
+	m_world->GenEntity(m_skeletonArcher, m_player->transform->GetPosition());
 
 	/* Init crosshair */
 	Sprite& crosshairSprite = *m_crosshair->GetComponent<Sprite>();
