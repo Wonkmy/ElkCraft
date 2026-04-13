@@ -38,6 +38,8 @@ namespace ElkCraft::System
 		void UpdateInventorySelector();
 		void UpdateInventoryBarSlots();
 		void UpdatePlayer();
+
+		void UpdateEntity();
 		void UpdateWorld();
 		void UpdateHearts();
 		void UpdateHunger();

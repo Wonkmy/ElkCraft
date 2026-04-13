@@ -44,6 +44,8 @@ namespace ElkCraft::Terrain
 		void SetBlock(float p_x, float p_y, float p_z, uint8_t p_newBlockID, bool p_updateChunk);
 		void SetBlock(int64_t p_x, int64_t p_y, int64_t p_z, uint8_t p_newBlockID, bool p_updateChunk, bool p_saveChanged);
 
+		void GenEntity();
+
 		void GenerateWorldAroundPlayer(const glm::vec3& p_playerPosition);
 
 		void Save();
@@ -72,7 +74,6 @@ namespace ElkCraft::Terrain
 		void GenerateTerrain();
 		void GenerateFlower(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update = false);
 		void GenerateTree(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update = false);
-		void GenerateEntity(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update = false);
 		void GenerateLeavesStage(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, uint8_t p_width, bool p_update = false);
 		void ApplyTerrainLayers(int64_t p_worldX, int16_t p_height, int64_t p_worldZ, bool p_update = false);
 		void ApplyTerrainProperties(int64_t p_worldX, int64_t p_height, int64_t p_worldZ, bool p_update = false);

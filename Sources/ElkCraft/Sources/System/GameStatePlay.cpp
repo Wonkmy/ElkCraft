@@ -94,6 +94,7 @@ void ElkCraft::System::GameStatePlay::UpdateDaytime()
 	m_renderingManager.SetDaytimeLightCoefficient(lightCoefficient);
 }
 
+// 此函数在Game::Run()通过获得当前状态去调用的。直接调用的是状态的Update，即：这里的GameStatePlay::Update()
 void ElkCraft::System::GameStatePlay::Update()
 {
 	PROFILER_SPY("GameStatePlay::Update");
@@ -558,6 +559,11 @@ void ElkCraft::System::GameStatePlay::UpdateInventoryBarSlots()
 		inventoryBarSlotText.SetString(quantity > 0 ? std::to_string(quantity) : "");
 		inventoryBarSlotText.SetPositionOffset(quantity > 9 ? glm::vec3(0.0012f, -0.0015f, 0.f) : glm::vec3(0.0025f, -0.0015f, 0.f));
 	}
+}
+
+void ElkCraft::System::GameStatePlay::UpdateEntity()
+{
+	m_skeletonArcher->UpdateComponents();
 }
 
 void ElkCraft::System::GameStatePlay::UpdatePlayer()

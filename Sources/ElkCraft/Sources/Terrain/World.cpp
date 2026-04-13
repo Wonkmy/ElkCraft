@@ -127,6 +127,8 @@ void World::Populate()
 	SetNeighbours();
 	GenerateTerrain();
 	UpdateLocalWorldChunks();
+
+	GenEntity();
 }
 
 void World::Clear()
@@ -395,6 +397,12 @@ void World::GenerateChunk(const uint8_t& p_xChunk, const uint8_t& p_zChunk, cons
 	LoadChunks(p_xChunk, p_zChunk);
 }
 
+// 生成一个实体如怪物到世界中
+void World::GenEntity()
+{
+	SetBlock(glm::vec3(0.f, 10.f, 0.f), 10, false);
+}
+
 void World::GenerateTerrain()
 {
 	ElkTools::Debug::Log::Process("Terrain generation started", ElkTools::Debug::Log::LogLevel::LOG_INFO,
@@ -410,10 +418,6 @@ void World::GenerateTerrain()
 
 	ElkTools::Debug::Log::Process("Terrain generation completed", ElkTools::Debug::Log::LogLevel::LOG_INFO,
 	                              ElkTools::Debug::Log::LogColor::GREEN);
-}
-
-void ElkCraft::Terrain::World::GenerateEntity(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update) {
-	SetBlock(p_worldX, p_worldY + 1, p_worldZ, 6, p_update, false);
 }
 
 void ElkCraft::Terrain::World::GenerateFlower(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update)
