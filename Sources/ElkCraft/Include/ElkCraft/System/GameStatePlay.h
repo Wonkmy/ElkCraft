@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <ElkGameEngine/ElkGameEngine.h>
 
@@ -81,6 +81,9 @@ namespace ElkCraft::System
 		ElkGameEngine::Objects::GameObject*		m_hungerIcon[10];
 		ElkGameEngine::Objects::GameObject*		m_hand;
 		ElkGameEngine::Objects::GameObject*		m_handItem;
+
+		/* Enemies */
+		ElkGameEngine::Objects::GameObject* m_skeletonArcher;// 骷髅射手敌人
 
 		/* World */
 		std::shared_ptr<ElkCraft::Terrain::World>			m_world;

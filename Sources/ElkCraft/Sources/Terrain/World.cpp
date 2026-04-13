@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include "ElkCraft/Terrain/World.h"
 
@@ -412,6 +412,10 @@ void World::GenerateTerrain()
 	                              ElkTools::Debug::Log::LogColor::GREEN);
 }
 
+void ElkCraft::Terrain::World::GenerateEntity(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update) {
+	SetBlock(p_worldX, p_worldY + 1, p_worldZ, 6, p_update, false);
+}
+
 void ElkCraft::Terrain::World::GenerateFlower(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update)
 {
 	SetBlock(p_worldX, p_worldY, p_worldZ, m_fastNoise.GetValueFractal(static_cast<FN_DECIMAL>(p_worldX), static_cast<FN_DECIMAL>(p_worldY), static_cast<FN_DECIMAL>(p_worldZ)) > 0.2f ? 15 : 16, p_update, false);
@@ -423,15 +427,17 @@ void ElkCraft::Terrain::World::GenerateTree(int64_t p_worldX, int64_t p_worldY, 
 
 	uint8_t previousLeavesWidth = 0;
 
+	// 生成树干
 	for (uint8_t i = 0; i < treeHeight; ++i)
 	{
 		SetBlock(p_worldX, p_worldY + i, p_worldZ, 6, p_update, false);
 	}
 
+	// 生成树叶
 	for (uint8_t i = (treeHeight / 2) - 1; i < treeHeight; ++i)
 	{
 		uint8_t leavesWidth = 0;
-
+	
 		if (previousLeavesWidth == 0)
 			leavesWidth = 1;
 		else if (previousLeavesWidth == 1)
@@ -440,12 +446,13 @@ void ElkCraft::Terrain::World::GenerateTree(int64_t p_worldX, int64_t p_worldY, 
 			leavesWidth = m_fastNoise.GetValueFractal(static_cast<FN_DECIMAL>(p_worldX), static_cast<FN_DECIMAL>(p_worldY), static_cast<FN_DECIMAL>(p_worldZ)) > 0 ? 1 : 3;
 		else if (previousLeavesWidth == 3)
 			leavesWidth = previousLeavesWidth = 2;
-
+	
 		GenerateLeavesStage(p_worldX, p_worldY + i, p_worldZ, leavesWidth, p_update);
-
+	
 		previousLeavesWidth = leavesWidth;
 	}
 
+	// 生成树顶
 	SetBlock(p_worldX, p_worldY + treeHeight - 1, p_worldZ, 12, p_update, false);
 	SetBlock(p_worldX, p_worldY + treeHeight, p_worldZ, 12, p_update, false);
 }

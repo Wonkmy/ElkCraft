@@ -1,6 +1,7 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include <ElkTools/Debug/Log.h>
+#include <filesystem>
 
 #include "ElkCraft/System/SaveManager.h"
 #include "ElkCraft/Gameplay/Inventory.h"
@@ -9,7 +10,7 @@
 
 using namespace ElkCraft::System;
 using namespace ElkGameEngine::Objects::Components::Behaviours;
-namespace Fs = std::experimental::filesystem;
+namespace Fs = std::filesystem;
 
 SaveManager::SaveManager(const bool& p_newSave)
 	: m_savePath{"Save/"}, m_saveFile("save"), m_extention(".sav"), m_numberOfBlocks(0), m_isLoaded(!p_newSave)
@@ -61,10 +62,15 @@ SaveManager::~SaveManager()
 	m_readFile.close();
 	m_writeFile.close();
 
-	const Fs::path path = Fs::current_path() / m_savePath;
+	Fs::path saveDir = Fs::current_path() / Fs::path(m_savePath);
 
-	Fs::remove(path / (m_saveFile + m_extention));
-	Fs::rename(path / "saveWrite.sav", path / (m_saveFile + m_extention));
+	Fs::path saveFilePath = saveDir / (m_saveFile + m_extention);
+	Fs::path tempSaveFilePath = saveDir / "saveWrite.sav";
+
+	if (Fs::exists(saveFilePath))
+		Fs::remove(saveFilePath);
+	if (Fs::exists(tempSaveFilePath))
+		Fs::rename(tempSaveFilePath, saveFilePath);
 }
 
 bool SaveManager::SaveFileLoaded() const

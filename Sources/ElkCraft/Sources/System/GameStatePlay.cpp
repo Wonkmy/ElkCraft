@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include "ElkCraft/System/Game.h"
 
@@ -287,6 +287,11 @@ void ElkCraft::System::GameStatePlay::InitComponents()
 		currentRecipeRequirementText.SetPositionOffset(glm::vec3(0.0055f, 0.f, 0.f));
 		currentRecipeRequirementText.SetSpacing(0.4f);
 	}
+
+	/*Init Enemy SkeletonArcher*/
+	m_skeletonArcher = &m_sceneManager.GetCurrentScene().CreateGameObject("SkeletonArcher");
+	m_skeletonArcher->AddComponent<Rigidbody>();
+	m_skeletonArcher->AddComponent<EntitiyController>(m_world.get());
 
 	/* Init crosshair */
 	Sprite& crosshairSprite = *m_crosshair->GetComponent<Sprite>();

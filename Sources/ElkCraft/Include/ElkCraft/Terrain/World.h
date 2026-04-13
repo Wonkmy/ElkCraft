@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <random>
 #include <type_traits> //for std::underlying_type
@@ -72,6 +72,7 @@ namespace ElkCraft::Terrain
 		void GenerateTerrain();
 		void GenerateFlower(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update = false);
 		void GenerateTree(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update = false);
+		void GenerateEntity(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, bool p_update = false);
 		void GenerateLeavesStage(int64_t p_worldX, int64_t p_worldY, int64_t p_worldZ, uint8_t p_width, bool p_update = false);
 		void ApplyTerrainLayers(int64_t p_worldX, int16_t p_height, int64_t p_worldZ, bool p_update = false);
 		void ApplyTerrainProperties(int64_t p_worldX, int64_t p_height, int64_t p_worldZ, bool p_update = false);

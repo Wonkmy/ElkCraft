@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <ElkGameEngine/ElkGameEngine.h>
 
@@ -7,6 +7,7 @@
 #include "ElkCraft/System/GameStatePlay.h"
 #include "ElkCraft/System/GameStateMenu.h"
 #include "ElkCraft/Gameplay/PlayerController.h"
+#include "ElkCraft/Gameplay/EntityController.h"
 #include "ElkCraft/Gameplay/BlockInteraction.h"
 #include "ElkCraft/UI/Buttons.h"
 #include "ElkCraft/Terrain/World.h"

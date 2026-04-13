@@ -1,7 +1,9 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include "ElkTools/Utils/IniLoader.h"
 #include "ElkTools/Utils/SharedData.h"
+
+#include <filesystem> // 添加头文件
 
 using namespace ElkTools::Utils;
 
@@ -106,12 +108,13 @@ void ElkTools::Utils::IniLoader::LoadEveryFiles()
 	std::string line;
 	std::ifstream file;
 
-	for (std::experimental::filesystem::recursive_directory_iterator i(Utils::SharedData::__CONFIG_FOLDER_PATH), end; i != end; ++i)
+	// 使用 std::filesystem 替换 std::experimental::filesystem
+	for (const auto& entry : std::filesystem::recursive_directory_iterator(Utils::SharedData::__CONFIG_FOLDER_PATH))
 	{
-		if (!is_directory(i->path()))
+		if (!std::filesystem::is_directory(entry.path()))
 		{
-			std::string filepath = i->path().string();
-			std::string filename = i->path().filename().string();
+			std::string filepath = entry.path().string();
+			std::string filename = entry.path().filename().string();
 
 			if (filepath.size() > 4)
 			{
