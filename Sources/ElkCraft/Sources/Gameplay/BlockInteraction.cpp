@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include "ElkCraft/Gameplay/BlockInteraction.h"
 
@@ -109,6 +109,7 @@ void BlockInteraction::HandleInputs()
 	m_renderingManager.SetDestructionInfo(m_blockInFront.blockPosition, blockInFrontDestructionLevel);
 }
 
+// 打碎方块
 void BlockInteraction::BreakBlock()
 {
 	m_world->SetBlock(m_blockInFront.blockPosition.x, m_blockInFront.blockPosition.y, m_blockInFront.blockPosition.z, 0, true);
@@ -132,11 +133,12 @@ void BlockInteraction::BreakBlock()
 	}
 }
 
+// 放置方块
 void BlockInteraction::PlaceBlock()
 {
 	if (!m_inventory->GetCurrentSlot().IsEmpty() && !ItemsInfo::IsItem(m_inventory->GetCurrentSlot().type))
 	{
-		if (!BlocksInfo::IsFlower(m_blockInFront.type))
+		if (!BlocksInfo::IsFlower(m_blockInFront.type))// 如果将要被放置的方块是花，那么就不能放置
 		{
 			glm::vec3 newBlock = m_blockInFront.blockPosition + m_blockInFront.collisionFaceNormal;
 			uint8_t blockToReplace = m_world->GetBlockID(newBlock.x, newBlock.y, newBlock.z);
@@ -183,7 +185,7 @@ void BlockInteraction::PlaceBlock()
 					{
 						m_world->SetBlock(newBlock.x, newBlock.y, newBlock.z, blockToPlaceType, true);
 						PlayBlockSound(m_inventory->GetCurrentSlot().type, InteractionAction::PLACE);
-						m_inventory->RemoveCurrentObject();
+						m_inventory->RemoveCurrentObject();// 放置完方块后，当前物品栏的对应方块数量-1
 					}
 					else
 					{

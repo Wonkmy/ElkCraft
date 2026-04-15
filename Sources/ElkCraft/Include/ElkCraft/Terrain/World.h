@@ -44,7 +44,7 @@ namespace ElkCraft::Terrain
 		void SetBlock(float p_x, float p_y, float p_z, uint8_t p_newBlockID, bool p_updateChunk);
 		void SetBlock(int64_t p_x, int64_t p_y, int64_t p_z, uint8_t p_newBlockID, bool p_updateChunk, bool p_saveChanged);
 
-		void GenEntity(ElkGameEngine::Objects::GameObject* _entity, const glm::vec3& p_position);
+		void GenEntity();
 
 		void GenerateWorldAroundPlayer(const glm::vec3& p_playerPosition);
 

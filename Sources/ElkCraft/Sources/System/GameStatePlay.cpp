@@ -295,8 +295,11 @@ void ElkCraft::System::GameStatePlay::InitComponents()
 	}
 
 	/*Init Enemy SkeletonArcher*/
-	m_world->GenEntity(m_skeletonArcher, m_player->transform->GetPosition());
-
+	//m_world->GenEntity(m_skeletonArcher, m_player->transform->GetPosition());
+	/*glm::vec3 pposition = GetPlayerStartPosition();
+	pposition.z = 6;
+	m_skeletonArcher->transform->SetPosition(pposition);*/
+	m_world->GenEntity();
 	/* Init crosshair */
 	Sprite& crosshairSprite = *m_crosshair->GetComponent<Sprite>();
 	m_crosshair->transform->Translate(glm::vec3(0, 0, 0));

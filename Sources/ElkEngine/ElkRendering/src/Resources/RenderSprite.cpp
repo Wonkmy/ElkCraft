@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "ElkRendering/Resources/RenderSprite.h"
 
 using namespace ElkRendering::Resources;
@@ -13,12 +13,12 @@ void RenderSprite::Setup()
 {
 	m_texture = nullptr;
 
-	InitSpritePositions();
-	InitSpriteTextureCoordinates();
-	InitSpriteIndices();
-	InitBuffers();
+	InitSpritePositions();// 初始化精灵的位置坐标
+	InitSpriteTextureCoordinates();// 初始化精灵的纹理坐标
+	InitSpriteIndices();// 初始化精灵的索引数据
+	InitBuffers();// 初始化OpenGL缓冲对象
 
-	SetToDraw(true);
+	SetToDraw(true);// 设置精灵为可绘制状态
 }
 
 void RenderSprite::Draw() const
