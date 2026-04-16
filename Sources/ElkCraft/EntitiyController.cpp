@@ -19,8 +19,6 @@ EntitiyController::~EntitiyController()
 
 void EntitiyController::Update() {
 	// 这里简单的实现一个通过sin函数让实体上下浮动的效果
-	
-
 	/*float time = Time::GetDeltaTime();
 	
 	float newY = m_owner->transform->GetPosition().y + sin(time * floatSpeed) * floatHeight;

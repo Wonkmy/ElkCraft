@@ -1,6 +1,7 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include "ElkCraft/System/GameStateMenu.h"
+#include "ElkCraft/System/SimpleMeshRenderer.h"
 
 using namespace ElkTools::Utils;
 using namespace ElkTools::Managers;
@@ -14,6 +15,15 @@ using namespace ElkCraft::Gameplay;
 using namespace ElkCraft::UI;
 using namespace ElkCraft::System;
 
+SMR_MeshRenderer renderer;
+
+
+const float identity[16] = {
+	1,0,0,0,
+	0,1,0,0,
+	0,0,1,0,
+	0,0,0,1
+};
 ElkCraft::System::GameStateMenu::GameStateMenu(ElkGameEngine::Managers::EngineManager & p_engineManager) :
 	m_engineManager(p_engineManager),
 	m_sceneManager(ManagerLocator::Get<SceneManager>()),
@@ -93,20 +103,22 @@ void ElkCraft::System::GameStateMenu::InitGameObjects()
 	m_UICamera->transform->SetRotation(glm::vec3(0, -90, 0));
 
 	/* Init background */
-	Sprite& backgroundSprite = *m_background->GetComponent<Sprite>();
+
+	/*Sprite& backgroundSprite = *m_background->GetComponent<Sprite>();
 	backgroundSprite.SetTexture(*m_textureManager.RequireAndGet("Menu_Background"));
 	backgroundSprite.SetRenderLayer(1);
 	m_background->transform->SetPosition(glm::vec3(0.f, 0.f, -1.415f));
-	m_background->transform->SetScale(glm::vec3(1.777f, 1.f, 1.f));
+	m_background->transform->SetScale(glm::vec3(1.777f, 1.f, 1.f));*/
 
 	/* Init ElkCraft Logo */
-	Sprite& logoSprite = *m_logo->GetComponent<Sprite>();
+	/*Sprite& logoSprite = *m_logo->GetComponent<Sprite>();
 	m_logo->transform->SetPosition(glm::vec3(0.f, 0.55f, -1.414f));
 	m_logo->transform->SetScale(glm::vec3(2.3684f * 0.2f, 1.f * 0.2f, 1.f));
-	logoSprite.SetTexture(*m_textureManager.RequireAndGet("ElkCraft_Logo"));
+	logoSprite.SetTexture(*m_textureManager.RequireAndGet("ElkCraft_Logo"));*/
 
 	/* Init Play Button */
-	Sprite& playButtonSprite = *m_playButton->GetComponent<Sprite>();
+	
+	/*Sprite& playButtonSprite = *m_playButton->GetComponent<Sprite>();
 	Text& playButtonText = *m_playButton->GetComponent<Text>();
 	PlayButton& playButton = *m_playButton->GetComponent<PlayButton>();
 	playButtonSprite.SetTexture(*m_textureManager.RequireAndGet("Button"));
@@ -117,10 +129,11 @@ void ElkCraft::System::GameStateMenu::InitGameObjects()
 	playButtonText.SetString("PLAY");
 	playButtonText.SetSpacing(spacing);
 	playButtonText.SetFontSize(fontSize);
-	playButtonText.SetScalingMode(Text::ScalingMode::FONT_SIZE_ONLY);
+	playButtonText.SetScalingMode(Text::ScalingMode::FONT_SIZE_ONLY);*/
 
 	/* Init Continue Button */
-	Sprite& continueButtonSprite = *m_continueButton->GetComponent<Sprite>();
+	
+	/*Sprite& continueButtonSprite = *m_continueButton->GetComponent<Sprite>();
 	Text& continueButtonText = *m_continueButton->GetComponent<Text>();
 	ContinueButton& continueButton = *m_continueButton->GetComponent<ContinueButton>();
 	continueButtonSprite.SetTexture(*m_textureManager.RequireAndGet("Button"));
@@ -131,7 +144,7 @@ void ElkCraft::System::GameStateMenu::InitGameObjects()
 	continueButtonText.SetString("LOAD");
 	continueButtonText.SetSpacing(spacing);
 	continueButtonText.SetFontSize(fontSize);
-	continueButtonText.SetScalingMode(Text::ScalingMode::FONT_SIZE_ONLY);
+	continueButtonText.SetScalingMode(Text::ScalingMode::FONT_SIZE_ONLY);*/
 
 	/* init Quit Button */
 	Sprite& quitButtonSprite = *m_quitButton->GetComponent<Sprite>();
@@ -146,6 +159,22 @@ void ElkCraft::System::GameStateMenu::InitGameObjects()
 	quitButtonText.SetSpacing(spacing);
 	quitButtonText.SetFontSize(fontSize);
 	quitButtonText.SetScalingMode(Text::ScalingMode::FONT_SIZE_ONLY);
+
+
+	SMR_Shader shader;
+	shader.Init();
+
+	SMR_Mesh mesh = CreateSimpleTriangle();
+
+	renderer.mesh = &mesh;
+	renderer.shader = &shader;
+
+	float identity[16] = {
+		1,0,0,0,
+		0,1,0,0,
+		0,0,1,0,
+		0,0,0,1
+	};
 }
 
 void ElkCraft::System::GameStateMenu::UpdateButtonsAnimationSettings()
@@ -180,6 +209,9 @@ void ElkCraft::System::GameStateMenu::Update()
 	UpdateButton(*m_playButton);
 	UpdateButton(*m_continueButton);
 	UpdateButton(*m_quitButton);
+
+	// 每帧调用
+	renderer.Render(identity, identity);
 }
 
 void ElkCraft::System::GameStateMenu::HandleInputs()

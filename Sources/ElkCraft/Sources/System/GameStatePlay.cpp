@@ -136,7 +136,6 @@ void ElkCraft::System::GameStatePlay::CreateGameObjects()
 
 	m_skeletonArcher = &m_sceneManager.GetCurrentScene().CreateGameObject("SkeletonArcher");
 	m_skeletonArcher->AddComponent<EntitiyController>(m_world.get());
-	
 
 	/* Create UI Camera */
 	m_UICamera = &m_sceneManager.GetCurrentScene().CreateGameObject("UICamera");

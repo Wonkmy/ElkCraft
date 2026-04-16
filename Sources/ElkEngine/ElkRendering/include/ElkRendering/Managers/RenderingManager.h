@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <ElkAPI\IManager.h>
 
@@ -61,6 +61,8 @@ namespace ElkRendering
 			void PrepareChunkDraw();
 			void DrawChunk(const ElkRendering::Resources::RenderChunk& p_chunk, const glm::vec3& p_position);
 			void EndChunkDraw();
+
+			
 
 			void PrepareSpriteDraw();
 			void DrawSprite(const ElkRendering::Resources::RenderSprite& p_sprite, const glm::vec3& p_position, const glm::vec3& p_scale, const glm::vec4& p_color);

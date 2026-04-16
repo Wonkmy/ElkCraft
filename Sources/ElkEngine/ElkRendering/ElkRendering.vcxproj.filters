@@ -114,6 +114,9 @@
     <ClInclude Include="include\ElkRendering\Data\BlockGeometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\ElkRendering\Resources\ogt_vox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Debug\GLDebug.cpp">

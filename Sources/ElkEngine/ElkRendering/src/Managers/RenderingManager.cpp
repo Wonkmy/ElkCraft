@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include <ElkTools/Debug/Log.h>
 #include <ElkTools/Utils/Profiler.h>

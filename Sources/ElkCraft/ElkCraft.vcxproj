@@ -224,6 +224,7 @@
     <ClInclude Include="Include\ElkCraft\System\GameStateMenu.h" />
     <ClInclude Include="Include\ElkCraft\System\GameStatePlay.h" />
     <ClInclude Include="Include\ElkCraft\System\IGameState.h" />
+    <ClInclude Include="Include\ElkCraft\System\SimpleMeshRenderer.h" />
     <ClInclude Include="Include\ElkCraft\Terrain\FastNoise.h" />
     <ClInclude Include="Include\ElkCraft\Terrain\WorldProperties.h" />
     <ClInclude Include="Include\ElkCraft\UI\Buttons.h" />

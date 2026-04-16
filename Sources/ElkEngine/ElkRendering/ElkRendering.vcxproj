@@ -296,6 +296,7 @@ xcopy "$(SolutionDir)Dependencies\glew-2.1.0\bin\$(Platform)\*.dll" "$(SolutionD
     <ClInclude Include="include\ElkRendering\Managers\RenderingManager.h" />
     <ClInclude Include="include\ElkRendering\Managers\ShaderManager.h" />
     <ClInclude Include="include\ElkRendering\Managers\TextureManager.h" />
+    <ClInclude Include="include\ElkRendering\Resources\ogt_vox.h" />
     <ClInclude Include="include\ElkRendering\Resources\RenderOutline.h" />
     <ClInclude Include="include\ElkRendering\Resources\RenderChunk.h" />
     <ClInclude Include="include\ElkRendering\Resources\RenderText.h" />

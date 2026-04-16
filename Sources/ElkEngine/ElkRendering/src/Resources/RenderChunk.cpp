@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include <ElkTools/Utils/Profiler.h>
 #include <ElkTools/Utils/ManagerLocator.h>

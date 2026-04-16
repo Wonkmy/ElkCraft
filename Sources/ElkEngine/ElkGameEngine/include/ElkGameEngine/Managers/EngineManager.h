@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <memory>
 
@@ -103,6 +103,7 @@ namespace ElkGameEngine
 			std::map<uint64_t, std::reference_wrapper<Objects::GameObject>> m_chunks;
 			std::map<uint64_t, std::reference_wrapper<Objects::GameObject>> m_sprites;
 			std::map<uint64_t, std::reference_wrapper<Objects::GameObject>> m_texts;
+			std::map<uint64_t, std::reference_wrapper<Objects::GameObject>> m_meshs;
 
 			std::multimap<uint16_t, std::reference_wrapper<Objects::GameObject>, std::greater<uint16_t>> m_spritesToDraw;
 			std::multimap<uint16_t, std::reference_wrapper<Objects::GameObject>, std::greater<uint16_t>> m_chunksToDraw;

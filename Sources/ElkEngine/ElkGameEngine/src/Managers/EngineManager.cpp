@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include "ElkGameEngine/Managers/EngineManager.h"
 
@@ -242,6 +242,7 @@ void ElkGameEngine::Managers::EngineManager::RenderScene()
 		}
 	}
 	renderingManager.EndStringDraw();
+
 }
 
 void ElkGameEngine::Managers::EngineManager::ParseScene()

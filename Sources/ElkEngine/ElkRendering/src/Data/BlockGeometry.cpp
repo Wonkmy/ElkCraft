@@ -1,7 +1,8 @@
 ﻿#include "stdafx.h"
 
+#define OGT_VOX_IMPLEMENTATION
+#include "ElkRendering/Resources/ogt_vox.h"
 #include "ElkRendering/Data/BlockGeometry.h"
-
 std::vector<ElkRendering::Data::Vertex> ElkRendering::Data::BlockGeometry::m_vertices;
 glm::vec3 ElkRendering::Data::BlockGeometry::m_positions[8];
 glm::vec3 ElkRendering::Data::BlockGeometry::m_normals[6];
