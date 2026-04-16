@@ -297,6 +297,7 @@ xcopy "$(SolutionDir)Dependencies\glew-2.1.0\bin\$(Platform)\*.dll" "$(SolutionD
     <ClInclude Include="include\ElkRendering\Managers\ShaderManager.h" />
     <ClInclude Include="include\ElkRendering\Managers\TextureManager.h" />
     <ClInclude Include="include\ElkRendering\Resources\ogt_vox.h" />
+    <ClInclude Include="include\ElkRendering\Resources\RenderMesh.h" />
     <ClInclude Include="include\ElkRendering\Resources\RenderOutline.h" />
     <ClInclude Include="include\ElkRendering\Resources\RenderChunk.h" />
     <ClInclude Include="include\ElkRendering\Resources\RenderText.h" />
@@ -309,8 +310,6 @@ xcopy "$(SolutionDir)Dependencies\glew-2.1.0\bin\$(Platform)\*.dll" "$(SolutionD
     <ClInclude Include="include\Managers\RenderingManager.h" />
     <ClInclude Include="include\Managers\AResourceManager.h" />
     <ClInclude Include="include\Managers\ShaderManager.h" />
-    <ClInclude Include="include\Resources\Mesh.h" />
-    <ClInclude Include="include\Managers\MeshManager.h" />
     <ClInclude Include="include\Resources\Model.h" />
     <ClInclude Include="include\Resources\Shader.h" />
     <ClInclude Include="include\Resources\Texture.h" />
@@ -324,6 +323,7 @@ xcopy "$(SolutionDir)Dependencies\glew-2.1.0\bin\$(Platform)\*.dll" "$(SolutionD
     <ClCompile Include="src\Context\Driver.cpp" />
     <ClCompile Include="src\Managers\RenderingManager.cpp" />
     <ClCompile Include="src\Resources\RenderChunk.cpp" />
+    <ClCompile Include="src\Resources\RenderMesh.cpp" />
     <ClCompile Include="src\Resources\RenderOutline.cpp" />
     <ClCompile Include="src\Resources\RenderSprite.cpp" />
     <ClCompile Include="src\Resources\RenderText.cpp" />

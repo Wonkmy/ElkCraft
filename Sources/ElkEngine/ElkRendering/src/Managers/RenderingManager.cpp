@@ -117,6 +117,36 @@ void ElkRendering::Managers::RenderingManager::EndSpriteDraw()
 	m_currentShader->Unbind();
 }
 
+
+void ElkRendering::Managers::RenderingManager::PrepareMeshDraw()
+{
+	glClear(GL_DEPTH_BUFFER_BIT);
+	m_currentShader = m_shaderManager->RequireAndGet("mesh");
+	if (m_currentShader)
+	{
+		m_currentShader->Bind();
+	}
+}
+
+void ElkRendering::Managers::RenderingManager::DrawMesh(const ElkRendering::Resources::RenderMesh& p_mesh, const glm::vec3& p_position, const glm::vec3& p_scale, const glm::vec4& p_color)
+{
+	if (m_currentShader)
+	{
+		const glm::mat4 view = CalculateUIView();
+		const glm::mat4 projection = CalculateProjectionperspective();
+		const glm::mat4 model = glm::translate(glm::mat4(1.0f), p_position) * glm::scale(glm::mat4(1.0f), p_scale);
+		m_currentShader->SetUniformMat4("model", model);
+		m_currentShader->SetUniformMat4("view", view);
+		m_currentShader->SetUniformMat4("projection", projection);
+		p_mesh.Draw();
+	}
+}
+
+void ElkRendering::Managers::RenderingManager::EndMeshDraw()
+{
+	m_currentShader->Unbind();
+}
+
 void ElkRendering::Managers::RenderingManager::PrepareStringDraw()
 {
 	glClear(GL_DEPTH_BUFFER_BIT);

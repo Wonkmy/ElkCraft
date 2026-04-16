@@ -16,6 +16,7 @@
 #include "ElkGameEngine/Objects/Components/Behaviours/Chunk.h"
 #include "ElkGameEngine/Objects/Components/Behaviours/Sprite.h"
 #include "ElkGameEngine/Objects/Components/Behaviours/Text.h"
+#include "ElkGameEngine/Objects/Components/Behaviours/Mesh.h"
 #include "ElkGameEngine/Objects/Components/Transform.h"
 
 #include <ElkTools/Debug/Log.h>

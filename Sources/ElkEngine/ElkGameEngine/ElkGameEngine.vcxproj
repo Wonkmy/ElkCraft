@@ -327,6 +327,7 @@ xcopy "$(SolutionDir)Dependencies\glfw-3.2.1\bin\$(Platform)\*.dll" "$(SolutionD
     <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\AudioListener.h" />
     <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\Camera.h" />
     <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\Chunk.h" />
+    <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\Mesh.h" />
     <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\Rigidbody.h" />
     <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\Sprite.h" />
     <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\Text.h" />
@@ -367,6 +368,7 @@ xcopy "$(SolutionDir)Dependencies\glfw-3.2.1\bin\$(Platform)\*.dll" "$(SolutionD
     <ClCompile Include="src\Objects\Components\Behaviours\AudioListener.cpp" />
     <ClCompile Include="src\Objects\Components\Behaviours\Camera.cpp" />
     <ClCompile Include="src\Objects\Components\Behaviours\Chunk.cpp" />
+    <ClCompile Include="src\Objects\Components\Behaviours\Mesh.cpp" />
     <ClCompile Include="src\Objects\Components\Behaviours\Rigidbody.cpp" />
     <ClCompile Include="src\Objects\Components\Behaviours\Sprite.cpp" />
     <ClCompile Include="src\Objects\Components\Behaviours\Text.cpp" />

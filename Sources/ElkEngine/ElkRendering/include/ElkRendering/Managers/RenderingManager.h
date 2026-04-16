@@ -10,6 +10,7 @@
 #include "ElkRendering/Resources/RenderSprite.h"
 #include "ElkRendering/Resources/RenderOutline.h"
 #include "ElkRendering/Resources/RenderText.h"
+#include "ElkRendering/Resources/RenderMesh.h"
 
 namespace ElkRendering
 {
@@ -75,6 +76,11 @@ namespace ElkRendering
 			void SetOutlinePosition(glm::vec3 p_position);
 			void SetOutlineState(bool p_state);
 			void SetDestructionInfo(glm::vec3 p_position, uint8_t p_value);
+
+
+			void PrepareMeshDraw();
+			void DrawMesh(const ElkRendering::Resources::RenderMesh& p_mesh, const glm::vec3& p_position, const glm::vec3& p_scale, const glm::vec4& p_color);
+			void EndMeshDraw();
 
 		private:
 			void UpdateRenderMode();

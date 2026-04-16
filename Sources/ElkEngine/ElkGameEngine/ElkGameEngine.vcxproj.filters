@@ -156,6 +156,9 @@
     <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\ElkGameEngine\Objects\Components\Behaviours\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Objects\Components\Behaviours\ABehaviour.cpp">
@@ -216,6 +219,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Objects\Components\Behaviours\Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Components\Behaviours\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

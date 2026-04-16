@@ -205,6 +205,7 @@ void ElkGameEngine::Managers::EngineManager::RenderScene()
 	m_spritesToDraw.clear();
 	renderingManager.EndSpriteDraw();
 
+
 	/* Draw Texts */
 	renderingManager.PrepareStringDraw();
 	for (auto& text : m_texts)
@@ -256,6 +257,7 @@ void ElkGameEngine::Managers::EngineManager::ParseScene()
 	m_chunks.clear();
 	m_sprites.clear();
 	m_texts.clear();
+	m_meshs.clear();
 	m_physicsEntities.clear();
 
 	for (auto current : m_sceneManager->GetCurrentScene().GetGameObjects())
@@ -274,6 +276,7 @@ void ElkGameEngine::Managers::EngineManager::ParseGameObject(Objects::GameObject
 	auto rigidbody = p_gameObject->GetComponent<Rigidbody>();
 	auto sprite = p_gameObject->GetComponent<Sprite>();
 	auto text = p_gameObject->GetComponent<Text>();
+	auto mesh = p_gameObject->GetComponent<Mesh>();
 
 	if (camera)
 		m_camera = p_gameObject;
@@ -295,6 +298,9 @@ void ElkGameEngine::Managers::EngineManager::ParseGameObject(Objects::GameObject
 
 	if (text)
 		m_texts.insert(std::pair<uint64_t, std::reference_wrapper<Objects::GameObject>>(p_gameObject->GetInstanceID(), *p_gameObject));
+
+	if (mesh)
+		m_meshs.insert(std::pair<uint64_t, std::reference_wrapper<Objects::GameObject>>(p_gameObject->GetInstanceID(), *p_gameObject));
 }
 
 void ElkGameEngine::Managers::EngineManager::Consider(Objects::GameObject* p_toConsider)

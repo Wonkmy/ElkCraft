@@ -1,7 +1,6 @@
 ﻿#include "stdafx.h"
 
 #include "ElkCraft/System/GameStateMenu.h"
-#include "ElkCraft/System/SimpleMeshRenderer.h"
 
 using namespace ElkTools::Utils;
 using namespace ElkTools::Managers;
@@ -14,8 +13,6 @@ using namespace ElkCraft::Terrain;
 using namespace ElkCraft::Gameplay;
 using namespace ElkCraft::UI;
 using namespace ElkCraft::System;
-
-SMR_MeshRenderer renderer;
 
 
 const float identity[16] = {
@@ -87,6 +84,10 @@ void ElkCraft::System::GameStateMenu::CreateGameObjects()
 	m_quitButton->AddComponent<QuitButton>();
 	m_quitButton->AddComponent<Sprite>();
 	m_quitButton->AddComponent<Text>();
+
+	/* Create a mesh for testing */
+	m_myMesh = &m_sceneManager.GetCurrentScene().CreateGameObject("MyMesh");
+	m_myMesh->AddComponent<Mesh>();
 }
 
 void ElkCraft::System::GameStateMenu::InitGameObjects()
@@ -161,20 +162,11 @@ void ElkCraft::System::GameStateMenu::InitGameObjects()
 	quitButtonText.SetScalingMode(Text::ScalingMode::FONT_SIZE_ONLY);
 
 
-	SMR_Shader shader;
-	shader.Init();
 
-	SMR_Mesh mesh = CreateSimpleTriangle();
-
-	renderer.mesh = &mesh;
-	renderer.shader = &shader;
-
-	float identity[16] = {
-		1,0,0,0,
-		0,1,0,0,
-		0,0,1,0,
-		0,0,0,1
-	};
+	/* Init my mesh */
+	Mesh& myMesh = *m_myMesh->GetComponent<Mesh>();
+	RenderingManager& renderingManager = ManagerLocator::Get<RenderingManager>();
+	renderingManager.DrawMesh(myMesh.GetRenderMesh(), glm::vec3(0.f, 0.f, -1.5f), glm::vec3(0.5f), glm::vec4(1.f));
 }
 
 void ElkCraft::System::GameStateMenu::UpdateButtonsAnimationSettings()
@@ -209,9 +201,6 @@ void ElkCraft::System::GameStateMenu::Update()
 	UpdateButton(*m_playButton);
 	UpdateButton(*m_continueButton);
 	UpdateButton(*m_quitButton);
-
-	// 每帧调用
-	renderer.Render(identity, identity);
 }
 
 void ElkCraft::System::GameStateMenu::HandleInputs()

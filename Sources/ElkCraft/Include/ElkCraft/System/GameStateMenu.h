@@ -44,6 +44,8 @@ namespace ElkCraft::System
 		ElkGameEngine::Objects::GameObject* m_continueButton;
 		ElkGameEngine::Objects::GameObject* m_quitButton;
 
+		ElkGameEngine::Objects::GameObject* m_myMesh;
+
 		float m_currentButtonScale;
 		float m_targetButtonScale;
 

@@ -33,9 +33,6 @@
     <ClInclude Include="include\Resources\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Resources\Mesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Resources\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -43,9 +40,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Managers\AResourceManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Managers\MeshManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Managers\ModelManager.h">
@@ -117,6 +111,9 @@
     <ClInclude Include="include\ElkRendering\Resources\ogt_vox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\ElkRendering\Resources\RenderMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Debug\GLDebug.cpp">
@@ -156,6 +153,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Data\BlockGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resources\RenderMesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
